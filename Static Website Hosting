@@ -1,0 +1,15 @@
+Host a static website in Amazon S3.
+
+Steps:-
+1. Create a bucket in S3. First give unique name to a bucket.
+Then choose ACL disabled. Then disable the Block all Public Access button. Keep everything as it is and Create Bucket.
+
+2. After creating the bucket, click on the bucket and upload your HTML or CSS file (index.html) to the bucket.
+
+3. Go to Properties of bucket and Click on Static Website Hosting Edit button. Then select Enable. Then Hosting type should be Host a Static Website. Index document should be index.html and error document should be error.html. Then click on Okay button.
+
+4. Now, copy the link in the Static Website Hosting option and copy in the browser and see if the Website is running or not.
+
+5. If it is not running, then confirm that the Public Access is not blocked, then go to Object Ownership and enable the ACL Enabled option, now again go to objects option and select the index.html file and go to Actions option and Click on Make Public using ACL and Make it public.
+
+6. Then again go to browser and try to reload the website. This time the website will be running.

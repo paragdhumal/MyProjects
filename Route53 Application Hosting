@@ -1,0 +1,35 @@
+Host your application in Route53 using Load Balancer.
+Pre-requisites - You need a domain name for this project. You can get cheap domain names on Hostinger, Go Daddy etc.
+
+Step 1: Create an EC2 Instance and put the below script in the User Data option.
+#!/bin/bash
+yum update all
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+echo "Welcome to Linux Projects" >> /var/www/html/index.html
+
+This will create an index.html page for your application.
+
+Step 2: Create a Target Group and attach the above EC2 instance to the Target Group.
+
+Step 3: Now, Create an Application load Balancer. Attach the Target group to your Load Balancer.
+
+Step 4: Copy your Public IP address of your instance and paste it to your browser. You should see the message "Welcome to Linux Projects".
+Note: Add security group to EC2 and Load Balancer to open ports ssh-22, HTTP-80, and HTTPS-443.
+
+Step 5: Now copy your Load Balancer DNS to your browser and you shall see the message.
+
+Step 6: Now go to Route53 and Create a Hosted Zone.
+In Hosted Zone specify your Domain Name. Type - Public Hosted Zone. Now you shall see 2 records created by default in that Hosted Zone.
+Create another record: Record Type - A. Click on Alias. Select Endpoint as Application Load Balancer and your LB Region and then your Load Balancer DNS name.
+Make sure that Routing Policy is Simple Routing.
+Then Create Record.
+
+Step 7: In your Records look for a Record with Type: NS.
+Copy the "Value/Route Traffic to" values and Paste to your Domain Account Nameservers.
+eg. In Hostinger account select your Domain name and paste the copied values from record and paste to your Domains Nameservers.
+Note: There are 4 Nameservers that you need to copy.
+
+Step 8: Go to your browser and type your domain name. eg. example.com
+You shall see the message we wrote in index.html file.

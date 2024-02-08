@@ -34,3 +34,6 @@ Now, run the pipeline and see output in ECS in AWS console.
 
 If you get a error of 'Jenkins' dosen't find your label 'label name'.
 Then go to Manage Jenkins -> System -> Labels -> Add your cloud label
+
+If you get password related error then, go to $sudo visudo and add jenkins ALL=(ALL) NOPASSWD: ALL
+and restart Jenkins service.

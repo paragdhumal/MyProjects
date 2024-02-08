@@ -1,0 +1,6 @@
+Create an EC2 instance with Ubuntu as image.
+Install Java and Jenkins on the EC2 system from the following link.
+Jenkins link: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+Access your Jenkins at PublicIp:8080.
+Setup Jenkins.
+Create a new with new name and Pipeline option.

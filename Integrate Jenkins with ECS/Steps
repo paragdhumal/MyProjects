@@ -3,4 +3,31 @@ Install Java and Jenkins on the EC2 system from the following link.
 Jenkins link: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
 Access your Jenkins at PublicIp:8080.
 Setup Jenkins.
-Create a new with new name and Pipeline option.
+Create a new job with new name and Pipeline option.
+Write your script. (You can find a script in the folder)
+Go to Manage Jenkins. Go to Clouds.
+Install a plugin named Fargate in Jenkins. (Fargate is a serverless service).
+Go to Clouds section in Manage Jenkins.
+Create New Cloud. Give Cloud name and select type.
+Go to AWS and go to Amazon Elastic Container Service and Create a Cluster.
+A stack will also be created in Cloud Formation Templates.
+Attach a role to EC2 to give admin rights.
+Select the created Cluster in Jenkins Cloud setting.
+In ECS Agent Templates - 
+Give label name (Give the same label name in your scipt in label section)
+Give new Template Name
+Agent Container Name - IPofEC2:5000
+Docker Image - jenkins/inbound-agent
+Launch Type - FARGATE
+OS Family - Linux
+Architecture - x86-64
+Network Mode - awsvpc
+Soft Memory - 1024 bytes
+Subnet - copy subnet ID from your AWS account
+Security Group - Copy from your EC2 security group.
+Assign Public IP - Tick this option.
+Advanced Setting - Tunnel Connection Through - IpofEC2:5000.
+
+Now, go to Manage Jenkins - Security - TCP port for Inbound Agent - Fixed port 5000
+Also, add 5000 port to your EC2 machine inbound rules.
+Now, run the pipeline and see output in ECS in AWS console.

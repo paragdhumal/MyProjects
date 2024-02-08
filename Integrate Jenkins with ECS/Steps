@@ -31,3 +31,6 @@ Advanced Setting - Tunnel Connection Through - IpofEC2:5000.
 Now, go to Manage Jenkins - Security - TCP port for Inbound Agent - Fixed port 5000
 Also, add 5000 port to your EC2 machine inbound rules.
 Now, run the pipeline and see output in ECS in AWS console.
+
+If you get a error of 'Jenkins' dosen't find your label 'label name'.
+Then go to Manage Jenkins -> System -> Labels -> Add your cloud label

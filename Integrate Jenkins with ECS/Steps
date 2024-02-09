@@ -37,3 +37,7 @@ Then go to Manage Jenkins -> System -> Labels -> Add your cloud label
 
 If you get password related error then, go to $sudo visudo and add jenkins ALL=(ALL) NOPASSWD: ALL
 and restart Jenkins service.
+
+If you get aws not found error, install aws cli in machine. 
+sudo -i -u jenkins
+then, sudo apt install aws-cli

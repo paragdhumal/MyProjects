@@ -1,0 +1,45 @@
+*** JENKINS CICD WITH GITHUB INTEGRATION ***
+
+In this project, we will deploy NodeJS application using Jenkins and Docker.
+
+Steps:->
+1. Create an EC2 instance in your AWS account with Ubuntu AMI, t2.micro instance type. 
+2. Connect your instance through ssh using putty or Mobaxterm.
+3. Install Jenkins on your EC2 instance. Use link: https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+4. Copy your Public Ip of your instance and paste it in your browser with port 8080.
+5. eg. 172.10.0.0:8080. Enable port 8080 in your Security Group of Instance.
+6. Follow the instructions in the Jenkins in your browser for basic setup and click on "Start using Jenkins".
+7. Click on New Item and give a name and click on Freestyle project.
+8. Give some description and select "Github Project" option and paste url of the project in Github. Here use this link: https://github.com/paragdhumal/node-todo-cicd.git
+9. In Source Code Management, select Git and paste link of your project in Github and select credentials and give private key in credentials.
+10. Give command ssh-keygen in EC2 and generate keys. Copy your public key and paste it in your Github settings SSH keys option. For connection of your instance and Github.
+11. Save and Build Now. Our code has been downloaded in our system.
+12. Read README file and install Node JS and npm in your system. Put npm install command and node app.js and access your application in 8000 port. Your application should be running.
+13. Now we have to use Docker to run the application and write all the steps that we used till now in Dockerfile and run the application in your Docker Container.
+14. First we got the code, then we installed the dependencies by installing nodejs and npm install and then we run the application by using node app.js.
+15. Install docker in your system "sudo apt install docker.io".
+16. Create Dockerfile. "vim Dockerfile". 
+17. Paste the below text in Dockerfile.
+FROM node:12.12.0-alpine
+
+WORKDIR app
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 8000
+
+CMD ["node","app.js"]
+
+18. Put command docker build . -t application-name
+19. Your image will be created. Check "docker images". You will see image created.
+20. Now run your image "docker run -d --name node-app -p 8000:8000 imagename. Your container is running in port 8000. Check "docker ps".
+21. Now we will write Jenkins file and automate everything that we did till now from getting code to running docker containers.
+22. Go to jenkins job. Go to build steps and paste docker build and docker run commands and Build Now.
+23. Now to automate the entire process install a plugin in Jenkins named "Github Integration".
+24. Now go to Github and to your Repo settings and go to Webhook.
+25. In Payload url give your Jenkins url with port eg. http://34.229.163.164:8080/github-webhook/ then add webhook.
+26. Enable this option in Jenkins job "GitHub hook trigger for GITScm polling".
+27. Now do some changes in your code in Github. This shall trigger the Jenkins pipeline automatically and create the container and run application.
+

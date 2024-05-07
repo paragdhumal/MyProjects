@@ -18,7 +18,7 @@ wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.100/bin/apache-tomcat-8.5.100
 
 7. **Then move .war file from the uploaded location to webapps/ folder in "apache-tomcat-8.5.97". Similarly, move .jar file to lib/ folder in "apache-tomcat-8.5.97".**
 
-8. **Now go to folder bin/ folder and run the catalina.sh script.
+8. **Now go to folder bin/ folder and run the catalina.sh script.**
 
 ```bash
 ./catalina.sh start
@@ -47,7 +47,7 @@ systemctl enable mariadb
  
 15. **Then execute the command 'use <database name>;' to enter the database.**
 
-16. Create a table from the following query (Query is for reference purpose only).
+16. **Create a table from the following query (Query is for reference purpose only).**
 
 ```bash
 CREATE TABLE if not exists students (studentid INT NOT NULL AUTO_INCREMENT,
@@ -72,17 +72,17 @@ CREATE TABLE if not exists students (studentid INT NOT NULL AUTO_INCREMENT,
 ```
 
 
-**Note few changes to make are
+** Note few changes to make are
 username=root , password=1234 ,
 url="jdbc:mysql://localhost:3306/database name"**
  
-**for example:-
+** FOR EXAMPLE:-
 <Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
 maxTotal="100" maxIdle="30" maxWaitMillis="10000"
 username="root" password="1234" driverClassName="com.mysql.jdbc.Driver"
 url="jdbc:mysql://localhost:3306/studentapp"/>**
 
-**Now, to view entries in databases
+** Now, to view entries in databases
 SHOW DATABASES; -- gives you list of available databases
 SHOW TABLES; -- list tables in a specific database
 DESCRIBE TABLE_NAME -- Views you schema

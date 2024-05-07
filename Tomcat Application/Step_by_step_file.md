@@ -2,7 +2,14 @@ Host a Tomcat server in an instance and attach MariaDB to it (2 tier application
 
 1. Launch an EC2 instance in AWS with general configurations. Open port 22, 3306 and 8080 in Security group.
 2. Take access of your instance via. ssh through Putty or MobaXterm.
-3. Install Java on the system (yum install java -y). Now go to Google and type 'Tomcat 8 Download', go to the first link and copy the tar.gz link from Core. Now, in your system put the command (wget <link of tomcat>) and press enter.
+3. Install Java on the system.
+'''
+yum install java -y
+'''
+Now go to Google and type 'Tomcat 8 Download', go to the first link and copy the tar.gz link from Core. Now, in your system put the command and press enter.
+'''
+wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.100/bin/apache-tomcat-8.5.100.tar.gz
+'''
 4. The file is zipped. Unzip by command (tar -xzvf <file name>). Now, go inside the unzipped folder named "apache-tomcat-8.5.97".
 5. Now upload your development file eg. .war file and sql connector file .jar file to your instance through MobaXterm or scp command.
 6. Then move .war file from the uploaded location to webapps/ folder in "apache-tomcat-8.5.97". Similarly, move .jar file to lib/ folder in "apache-tomcat-8.5.97".
